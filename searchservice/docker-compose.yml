@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:16.0
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+    environment:
+      - POSTGRES_DB=DEMODB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=sBCA
+
+#  adminer:
+#    image: adminer:4.8.1
+#    restart: always
+#    ports:
+#      - 8081:8081
+
+#We simply host a PostgresSQL service on port 5432 (default) and map its original volume to ./data/db (for data persistance) in our current folder,
+#with the admin interface on port 8080.
