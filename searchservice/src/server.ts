@@ -5,12 +5,13 @@ import 'express-async-errors'; // <---------- apply async error patch
 import cors from 'cors';
 
 import { ONE_HUNDRED, ONE_THOUSAND, SIXTY } from './utils/constants';
-import { errorHandler } from '@/middlewares/globalErrorHandler';
+import { errorHandler } from '@/middlewares/global-error-handler';
 import path from 'node:path';
 import routes from '@/routes/rotues';
 
 interface ServerOptions {
 	port: number;
+
 	apiPrefix?: string;
 }
 

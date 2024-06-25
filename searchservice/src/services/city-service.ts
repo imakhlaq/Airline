@@ -1,4 +1,4 @@
-import CityRepo from '@/repository/cityRepo';
+import CityRepo from '@/repository/city-repo';
 import { City } from '@/db/models/city';
 
 class CityService {
@@ -19,7 +19,7 @@ class CityService {
 
 	async getCity(cityId: string) {
 		try {
-			return await this.cityRepo.createCity(cityDTO);
+			return await this.cityRepo.findCity(cityId);
 		} catch (err) {
 			console.log('something went wrong at service layer');
 			throw { err };
@@ -37,7 +37,7 @@ class CityService {
 
 	async updateCity(data: any, id: string) {
 		try {
-			return await this.cityRepo.createCity(cityDTO);
+			return;
 		} catch (err) {
 			console.log('something went wrong at service layer');
 			throw { err };
