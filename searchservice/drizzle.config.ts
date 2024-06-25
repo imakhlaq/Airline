@@ -1,16 +1,15 @@
 import { defineConfig } from 'drizzle-kit';
-import envConfig from './src/config/envConfig';
+import { env } from './src/config/env';
 
-if (!envConfig.DB_URL) throw new Error('DATABASE_URL is not set');
+if (!env.DB_URL) throw new Error('DATABASE_URL is not set');
 
 export default defineConfig({
-	schema: './src/db/models/*',
+	schema: './src/db/models/index.ts',
 	out: './src/db/drizzle',
 	dialect: 'postgresql', // "postgresql" | "mysql"
 	dbCredentials: {
-		url: envConfig.DB_URL
+		url: env.DB_URL
 	},
-
 	verbose: true,
 	strict: true
 });

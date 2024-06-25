@@ -13,8 +13,9 @@
       "jest",
       "express"
     ],
+    "baseUrl": "./",
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ESNext",
     "rootDir": "./src",
     "moduleResolution": "Node",
     "typeRoots": [
@@ -32,5 +33,9 @@
         "src/*"
       ]
     }
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
   }
 }
