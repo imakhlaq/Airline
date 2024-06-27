@@ -5,10 +5,12 @@ class CityService {
 	private cityRepo: CityRepo;
 
 	constructor() {
+		console.log('CITY SERVICE CONSTRUCTOR');
 		this.cityRepo = new CityRepo();
 	}
 
 	async createCity(cityDTO: CityDTO) {
+		console.log('Creating city');
 		return await this.cityRepo.createCity(cityDTO);
 	}
 

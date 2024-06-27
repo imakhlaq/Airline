@@ -10,7 +10,7 @@ import v2Routes from '@/routes/v2/v2-routes';
 const router = Router();
 
 //routes gonna be => /api/v1/.....
-router.get('/v1', v1Routes);
-router.get('/v2', v2Routes);
+router.use('/v1', v1Routes);
+router.use('/v2', v2Routes);
 
 export default router;

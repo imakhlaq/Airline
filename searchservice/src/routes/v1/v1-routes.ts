@@ -5,10 +5,10 @@ const app = Router();
 
 const cityController = new CityController();
 
-app.get('/get-city/:id', cityController.getCity);
-app.post('/add-city', cityController.addCity);
-app.delete('/delete-city', cityController.deleteCity);
-app.get('get-all-city', cityController.getAllCity);
+app.get('/get-city/:id', cityController.getCity.bind(cityController));
+app.post('/add-city', cityController.addCity.bind(cityController));
+app.delete('/delete-city', cityController.deleteCity.bind(cityController));
+app.get('get-all-city', cityController.getAllCity.bind(cityController));
 app.patch('update-city');
 
 export default app;

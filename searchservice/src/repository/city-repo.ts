@@ -6,17 +6,17 @@ import { CityDTO } from '@/DTO/city';
 
 class CityRepo {
 	async createCity(cityDTO: CityDTO) {
-		await db.insert(city).values(cityDTO).returning();
+		return db.insert(city).values(cityDTO).returning();
 	}
 
 	async findCity(id: string) {
-		return await db.select().from(city).where(eq(city.id, id));
+		return db.select().from(city).where(eq(city.id, id));
 	}
 
 	async updateCity(city: City, id: string) {}
 
 	async deleteCity(id: string) {
-		return await db.delete(city).where(eq(city.id, id));
+		return db.delete(city).where(eq(city.id, id));
 	}
 }
 

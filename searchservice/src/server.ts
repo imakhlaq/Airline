@@ -28,7 +28,6 @@ export class Server {
 		this.app.use(express.json()); // parse json in request body (allow raw)
 		this.app.use(express.urlencoded({ extended: true })); // allow x-www-form-urlencoded
 		this.app.use(compression());
-		this.app.use(errorHandler); //global error handler
 		this.app.use(express.static(path.join())); //serving static files
 		this.app.use(cors()); //cors enable (you can configure it)
 
@@ -43,6 +42,8 @@ export class Server {
 
 		// all the routes
 		this.app.use('/api', routes);
+
+		this.app.use(errorHandler); //global error handler
 
 		this.app.listen(this.port, () => {
 			console.log(`Server running on port ${this.port}...`);
