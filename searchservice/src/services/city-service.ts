@@ -1,5 +1,5 @@
 import CityRepo from '@/repository/city-repo';
-import { CityDTO } from '@/DTO/city';
+import { CityDTO, CityIdDTO } from '@/DTO/city';
 
 class CityService {
 	private cityRepo: CityRepo;
@@ -14,12 +14,19 @@ class CityService {
 		return await this.cityRepo.createCity(cityDTO);
 	}
 
-	async getCity(cityId: string) {
-		return await this.cityRepo.findCity(cityId);
+	async getCity(cityId: CityIdDTO) {
+		const data = await this.cityRepo.getCity(cityId);
+
+		console.log(data);
+		return data;
 	}
 
-	async deleteCity(id: string) {
-		return await this.cityRepo.deleteCity(id);
+	async deleteCity(id: CityIdDTO) {
+		const deletedCity = await this.cityRepo.deleteCity(id);
+
+		if (!deletedCity) throw new Error();
+
+		return deletedCity;
 	}
 
 	async updateCity(data: any, id: string) {

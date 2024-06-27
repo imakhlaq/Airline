@@ -4,7 +4,7 @@ type Param = {
 	code?: number;
 	message?: string;
 	logging?: boolean;
-	context?: { [key: string]: never };
+	context?: { [key: string]: any };
 };
 
 export default class BadRequest extends CustomError {

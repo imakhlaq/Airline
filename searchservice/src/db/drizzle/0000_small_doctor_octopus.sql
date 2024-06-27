@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS "airports" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "city" (
-	"airport_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"airport_name" varchar(256) NOT NULL
+	"city_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"city_name" varchar(256) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "flights" (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "flights" (
 );
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "airports" ADD CONSTRAINT "airports_city_id_city_airport_id_fk" FOREIGN KEY ("city_id") REFERENCES "public"."city"("airport_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "airports" ADD CONSTRAINT "airports_city_id_city_city_id_fk" FOREIGN KEY ("city_id") REFERENCES "public"."city"("city_id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

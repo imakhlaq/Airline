@@ -1,6 +1,7 @@
 import CityService from '@/services/city-service';
 import { Request, Response } from 'express';
-import { cityValid } from '@/DTO/city';
+import { cityIdValid, cityValid } from '@/DTO/city';
+import { z } from 'zod';
 
 class CityController {
 	private readonly cityService: CityService;
@@ -10,10 +11,18 @@ class CityController {
 	}
 
 	public async getCity(req: Request, res: Response) {
-		return res.json({ message: 'hello' });
+		const cityDTO = cityIdValid.parse(req.params);
+
+		const data = await this.cityService.getCity(cityDTO);
+		return res.status(200).json(data);
 	}
 
-	public async deleteCity(req: Request, res: Response) {}
+	public async deleteCity(req: Request, res: Response) {
+		const cityDTO = cityIdValid.parse(req.params);
+
+		const data = await this.cityService.deleteCity(cityDTO);
+		return res.status(200).json(data);
+	}
 
 	public async addCity(req: Request, res: Response) {
 		//validating the city
