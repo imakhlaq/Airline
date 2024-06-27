@@ -4,7 +4,7 @@ import airport from '@/db/models/airport';
 
 const city = pgTable('city', {
 	id: uuid('city_id').primaryKey().defaultRandom(),
-	name: varchar('city_name', { length: 256 }).notNull()
+	name: varchar('city_name', { length: 256 }).notNull().unique()
 });
 
 export const cityRelations = relations(city, ({ many }) => ({
