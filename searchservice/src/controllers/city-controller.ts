@@ -2,6 +2,7 @@ import CityService from '@/services/city-service';
 import { Request, Response } from 'express';
 import { cityIdValid, cityValid } from '@/DTO/city';
 import { z } from 'zod';
+import { StatusCodes } from 'http-status-codes';
 
 class CityController {
 	private readonly cityService: CityService;
@@ -32,7 +33,11 @@ class CityController {
 		return res.status(200).json(newCity);
 	}
 
-	public async getAllCity(req: Request, res: Response) {}
+	public async getAllCity(req: Request, res: Response) {
+		const allCities = await this.cityService.getAllCities('11', 1, 3);
+		console.log(allCities);
+		return res.status(StatusCodes.OK).json(allCities);
+	}
 }
 
 export default CityController;

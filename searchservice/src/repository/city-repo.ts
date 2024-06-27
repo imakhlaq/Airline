@@ -18,6 +18,10 @@ class CityRepo {
 	async deleteCity(id: CityIdDTO) {
 		return db.delete(city).where(eq(city.id, id.id)).returning();
 	}
+
+	async getAllCity(query: any, offset: number, limit: number) {
+		return db.select().from(city);
+	}
 }
 
 export default CityRepo;

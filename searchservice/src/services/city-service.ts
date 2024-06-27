@@ -7,7 +7,6 @@ class CityService {
 	private cityRepo: CityRepo;
 
 	constructor() {
-		console.log('CITY SERVICE CONSTRUCTOR');
 		this.cityRepo = new CityRepo();
 	}
 
@@ -27,9 +26,17 @@ class CityService {
 	async deleteCity(id: CityIdDTO) {
 		const deletedCity = await this.cityRepo.deleteCity(id);
 
-		if (!deletedCity[0]) throw new NoCityFound(StatusCodes.BAD_REQUEST, 'Invalid city id', '/delete-city:id');
+		if (!deletedCity.length) throw new NoCityFound(StatusCodes.BAD_REQUEST, 'Invalid city id', '/delete-city:id');
 
 		return deletedCity;
+	}
+
+	async getAllCities(query: string, offset: number, limit: number) {
+		const data = await this.cityRepo.getAllCity('check', 1, 4);
+
+		if (!data.length) throw new NoCityFound(StatusCodes.BAD_REQUEST, 'No city found', '/get-all-city');
+
+		return data;
 	}
 
 	async updateCity(data: any, id: string) {
