@@ -1,0 +1,191 @@
+{
+  "id": "41a7686c-8c33-4a59-adf0-28a11e96e3df",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.airplanes": {
+      "name": "airplanes",
+      "schema": "",
+      "columns": {
+        "airplane_id": {
+          "name": "airplane_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "airplane_model_number": {
+          "name": "airplane_model_number",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "airplane_capacity": {
+          "name": "airplane_capacity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.airports": {
+      "name": "airports",
+      "schema": "",
+      "columns": {
+        "airport_id": {
+          "name": "airport_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "airport_name": {
+          "name": "airport_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "city_id": {
+          "name": "city_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "airports_city_id_city_airport_id_fk": {
+          "name": "airports_city_id_city_airport_id_fk",
+          "tableFrom": "airports",
+          "tableTo": "city",
+          "columnsFrom": [
+            "city_id"
+          ],
+          "columnsTo": [
+            "airport_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.city": {
+      "name": "city",
+      "schema": "",
+      "columns": {
+        "airport_id": {
+          "name": "airport_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "airport_name": {
+          "name": "airport_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.flights": {
+      "name": "flights",
+      "schema": "",
+      "columns": {
+        "airplane_id": {
+          "name": "airplane_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "departure_city_id": {
+          "name": "departure_city_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "destination_city_id": {
+          "name": "destination_city_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "city_id": {
+          "name": "city_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "departure_time": {
+          "name": "departure_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "arrival_time": {
+          "name": "arrival_time",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "flight_number": {
+          "name": "flight_number",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "flights_city_id_airplanes_airplane_id_fk": {
+          "name": "flights_city_id_airplanes_airplane_id_fk",
+          "tableFrom": "flights",
+          "tableTo": "airplanes",
+          "columnsFrom": [
+            "city_id"
+          ],
+          "columnsTo": [
+            "airplane_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

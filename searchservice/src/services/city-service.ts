@@ -44,3 +44,5 @@ class CityService {
 		}
 	}
 }
+
+export default CityService;

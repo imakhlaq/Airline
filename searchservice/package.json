@@ -15,8 +15,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "db:gen": "drizzle-kit generate",
-    "db:mig": "tsx src/db/migrate.ts",
+    "db:genrate": "drizzle-kit generate",
+    "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "cross-env DB_SEEDING=true tsx src/db/seed.ts"
   },
   "keywords": [],

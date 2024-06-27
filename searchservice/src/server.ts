@@ -7,11 +7,10 @@ import cors from 'cors';
 import { ONE_HUNDRED, ONE_THOUSAND, SIXTY } from './utils/constants';
 import { errorHandler } from '@/middlewares/global-error-handler';
 import path from 'node:path';
-import routes from '@/routes/rotues';
+import routes from '@/routes/root-routes';
 
 interface ServerOptions {
 	port: number;
-
 	apiPrefix?: string;
 }
 

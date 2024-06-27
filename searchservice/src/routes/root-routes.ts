@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
+import v1Routes from '@/routes/v1/v1-routes';
+import v2Routes from '@/routes/v2/v2-routes';
 
 /**
  * Keep All the routes here.
@@ -8,8 +9,7 @@ import { StatusCodes } from 'http-status-codes';
 
 const router = Router();
 
-router.get('/', (_, res) => {
-	return res.status(StatusCodes.OK).json({ message: 'Hello World' });
-});
+router.get('/v1', v1Routes);
+router.get('/v2', v2Routes);
 
 export default router;
