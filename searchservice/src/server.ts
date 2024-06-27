@@ -11,7 +11,7 @@ import routes from '@/routes/root-routes';
 
 interface ServerOptions {
 	port: number;
-	apiPrefix?: string;
+	contextPath?: string;
 }
 
 export class Server {
@@ -42,7 +42,7 @@ export class Server {
 		);
 
 		// all the routes
-		this.app.use(routes);
+		this.app.use('/api', routes);
 
 		this.app.listen(this.port, () => {
 			console.log(`Server running on port ${this.port}...`);

@@ -21,3 +21,5 @@ services:
 
 #We simply host a PostgresSQL service on port 5432 (default) and map its original volume to ./data/db (for data persistance) in our current folder,
 #with the admin interface on port 8080.
+
+#docker compose -f docker-compose.yml up
