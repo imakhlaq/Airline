@@ -1,11 +1,38 @@
-import { Response } from 'express';
+import { Response, Request } from 'express';
+import { airplaneValid, capacityChangeValid } from '@/DTO/airplane';
+import AirplaneService from '@/services/airplane-service';
+import { StatusCodes } from 'http-status-codes';
 
-class AirplaneController {
-	public async addAirplane(req: Request, res: Response) {}
+class AirportController {
+	private readonly airplaneService: AirplaneService;
 
-	public async getAirplane(req: Request, res: Response) {}
+	constructor() {
+		this.airplaneService = new AirplaneService();
+	}
 
-	public async removeAirplane(req: Request, res: Response) {}
+	public async addAirplane(req: Request, res: Response) {
+		const airplaneDTO = airplaneValid.parse(req.body);
+
+		const data = await this.airplaneService.addAirplane(airplaneDTO);
+
+		return res.status(StatusCodes.OK).json(data);
+	}
+
+	public async removeAirplane(req: Request, res: Response) {
+		const { id } = req.params;
+
+		const data = await this.airplaneService.removeAirplane(id as string);
+
+		return res.status(StatusCodes.OK).json(data);
+	}
+
+	public async updateCapacity(req: Request, res: Response) {
+		const capacityDTO = capacityChangeValid.parse(req.body);
+
+		const data = await this.airplaneService.updateCapacity(capacityDTO);
+
+		return res.status(StatusCodes.OK).json(data);
+	}
 }
 
-export default AirplaneController;
+export default AirportController;
