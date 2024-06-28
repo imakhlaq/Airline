@@ -1,7 +1,7 @@
 import { City } from '@/db/models/city';
 import { db } from '@/db/db';
 import { city } from '@/db/models';
-import { eq } from 'drizzle-orm/sql/expressions/conditions';
+import { eq, ilike } from 'drizzle-orm';
 import { CityDTO, CityIdDTO } from '@/DTO/city';
 
 class CityRepo {
@@ -19,7 +19,16 @@ class CityRepo {
 		return db.delete(city).where(eq(city.id, id.id)).returning();
 	}
 
-	async getAllCity(query: any, offset: number, limit: number) {
+	async getAllCity(limit: number, offset: number, startsWith?: string) {
+		//if u have starting character then return only matching cities
+		if (startsWith)
+			return db
+				.select()
+				.from(city)
+				.where(ilike(city.name, `${startsWith}%`))
+				.limit(limit)
+				.offset(offset);
+
 		return db.select().from(city);
 	}
 }

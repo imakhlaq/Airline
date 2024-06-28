@@ -31,8 +31,8 @@ class CityService {
 		return deletedCity;
 	}
 
-	async getAllCities(query: string, offset: number, limit: number) {
-		const data = await this.cityRepo.getAllCity('check', 1, 4);
+	async getAllCities(limit: number, offset: number, query?: string) {
+		const data = await this.cityRepo.getAllCity(limit, offset, query);
 
 		if (!data.length) throw new NoCityFound(StatusCodes.BAD_REQUEST, 'No city found', '/get-all-city');
 
