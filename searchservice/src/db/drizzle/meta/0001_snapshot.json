@@ -1,6 +1,6 @@
 {
-  "id": "e2566308-c7a8-4392-8057-39338eb1b1cb",
-  "prevId": "74b98b5a-9bc7-4094-8d21-b5f70db04332",
+  "id": "2ddfa79a-dab2-4b3b-92d9-96a87e8e23c7",
+  "prevId": "d9c80b90-2dd0-4281-9a6b-2e1f1a30c989",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -97,7 +97,7 @@
           "columnsTo": [
             "city_id"
           ],
-          "onDelete": "no action",
+          "onDelete": "cascade",
           "onUpdate": "no action"
         }
       },
@@ -160,14 +160,14 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "departure_city_id": {
-          "name": "departure_city_id",
+        "departure_airport_id": {
+          "name": "departure_airport_id",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
         },
-        "destination_city_id": {
-          "name": "destination_city_id",
+        "destination_airport_id": {
+          "name": "destination_airport_id",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true

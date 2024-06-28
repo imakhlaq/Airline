@@ -1,13 +1,13 @@
-import { date, integer, pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
+import { pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import airplane from '@/db/models/airplane';
 import { relations } from 'drizzle-orm';
 import airport from '@/db/models/airport';
 
 const flights = pgTable('flights', {
 	id: uuid('airplane_id').primaryKey().defaultRandom(),
-	departureCityId: varchar('departure_city_id', { length: 256 }).notNull(),
-	destinationCityId: varchar('destination_city_id', { length: 256 }).notNull(),
-	airplaneId: uuid('city_id').references(() => airplane.id),
+	departureAirportId: varchar('departure_airport_id', { length: 256 }).notNull(),
+	destinationAirportId: varchar('destination_airport_id', { length: 256 }).notNull(),
+	airplaneId: uuid('city_id').references(() => airplane.id, { onDelete: 'cascade' }),
 	departureTime: timestamp('departure_time').notNull(),
 	arrivalTime: timestamp('arrival_time').notNull(),
 	flightNo: varchar('flight_number').notNull(),

@@ -7,7 +7,7 @@ import { timestamp } from 'drizzle-orm/pg-core';
 const airport = pgTable('airports', {
 	id: uuid('airport_id').primaryKey().defaultRandom(),
 	name: varchar('airport_name', { length: 256 }).notNull(),
-	cityId: uuid('city_id').references(() => city.id),
+	cityId: uuid('city_id').references(() => city.id, { onDelete: 'cascade' }),
 	address: varchar('airport_name', { length: 256 }).notNull(),
 	createdAt: timestamp('created_at').notNull().defaultNow(),
 	updatedAt: timestamp('updated_at').notNull().defaultNow()

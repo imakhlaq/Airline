@@ -3,6 +3,8 @@ import { db } from '@/db/db';
 import { city } from '@/db/models';
 import { eq, ilike } from 'drizzle-orm';
 import { CityDTO, CityIdDTO } from '@/DTO/city';
+import { NoCityFound } from '@/errors/city';
+import { StatusCodes } from 'http-status-codes';
 
 class CityRepo {
 	async createCity(cityDTO: CityDTO) {

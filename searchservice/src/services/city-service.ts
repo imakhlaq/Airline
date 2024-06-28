@@ -11,8 +11,11 @@ class CityService {
 	}
 
 	async createCity(cityDTO: CityDTO) {
-		console.log('Creating city');
-		return await this.cityRepo.createCity(cityDTO);
+		try {
+			return await this.cityRepo.createCity(cityDTO);
+		} catch (err) {
+			throw new NoCityFound(StatusCodes.BAD_REQUEST, 'City already exits', '/add-city');
+		}
 	}
 
 	async getCity(cityId: CityIdDTO) {
