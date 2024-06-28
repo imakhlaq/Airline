@@ -8,6 +8,13 @@
       "when": 1719524416628,
       "tag": "0000_small_doctor_octopus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1719572066534,
+      "tag": "0001_funny_gunslinger",
+      "breakpoints": true
     }
   ]
 }
