@@ -16,12 +16,8 @@ class AirplaneRepo {
 		return db.select({ capacity: airplane.capacity }).from(airplane).where(eq(airplane.id, id));
 	}
 
-	public async updateCapacity(availableCapacity: number, id: String) {
-		return db
-			.update(airplane)
-			.set({ capacity: availableCapacity })
-			.where(eq(airplane.id, id as string))
-			.returning();
+	public async updateCapacity(availableCapacity: number, id: string) {
+		return db.update(airplane).set({ capacity: availableCapacity }).where(eq(airplane.id, id)).returning();
 	}
 }
 
