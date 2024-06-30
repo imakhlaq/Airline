@@ -1,6 +1,5 @@
 import AirplaneRepo from '@/repository/airplane-repo';
 import { AirplaneDTO, CapacityDTO } from '@/DTO/airplane';
-import { th } from '@faker-js/faker';
 import { CapacityExceeded } from '@/errors/airplane';
 import { StatusCodes } from 'http-status-codes';
 
@@ -12,11 +11,11 @@ class AirplaneService {
 	}
 
 	public async addAirplane(airplaneDTO: AirplaneDTO) {
-		return this.airplaneRepo.addAirplane(airplaneDTO);
+		return this.airplaneRepo.create(airplaneDTO);
 	}
 
 	public async removeAirplane(id: string) {
-		return this.airplaneRepo.removeAirplane(id);
+		return this.airplaneRepo.delete(id);
 	}
 
 	public async updateCapacity(capacityDTO: CapacityDTO) {

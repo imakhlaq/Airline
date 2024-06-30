@@ -2,14 +2,11 @@ import { db } from '@/db/db';
 import airplane from '@/db/models/airplane';
 import { AirplaneDTO } from '@/DTO/airplane';
 import { eq } from 'drizzle-orm';
+import Repository from '@/repository/IRepository';
 
-class AirplaneRepo {
-	public async addAirplane(airplaneDTO: AirplaneDTO) {
-		return db.insert(airplane).values(airplaneDTO).returning();
-	}
-
-	public async removeAirplane(id: string) {
-		return db.delete(airplane).where(eq(airplane.id, id));
+class AirplaneRepo extends Repository<typeof airplane> {
+	constructor() {
+		super(db, airplane);
 	}
 
 	public async getAvailableCapacity(id: string) {

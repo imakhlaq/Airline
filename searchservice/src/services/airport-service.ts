@@ -9,11 +9,11 @@ class AirportService {
 	}
 
 	public async addAirport(airportDTO: AirportDTO) {
-		return this.airportRepo.addAirport(airportDTO);
+		return this.airportRepo.create(airportDTO);
 	}
 
 	public async deleteAirport(id: string) {
-		return this.airportRepo.removeAirport(id);
+		return this.airportRepo.delete(id);
 	}
 }
 

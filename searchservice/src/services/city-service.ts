@@ -12,22 +12,22 @@ class CityService {
 
 	async createCity(cityDTO: CityDTO) {
 		try {
-			return await this.cityRepo.createCity(cityDTO);
+			return await this.cityRepo.create(cityDTO);
 		} catch (err) {
 			throw new NoCityFound(StatusCodes.BAD_REQUEST, 'City already exits', '/add-city');
 		}
 	}
 
-	async getCity(cityId: CityIdDTO) {
-		const data = await this.cityRepo.getCity(cityId);
+	async getCity({ id }: CityIdDTO) {
+		const data = await this.cityRepo.findById(id);
 
 		if (!data.length) throw new NoCityFound(StatusCodes.BAD_REQUEST, 'No city found', '/get-city:id');
 
 		return data;
 	}
 
-	async deleteCity(id: CityIdDTO) {
-		const deletedCity = await this.cityRepo.deleteCity(id);
+	async deleteCity({ id }: CityIdDTO) {
+		const deletedCity = await this.cityRepo.delete(id);
 
 		if (!deletedCity.length) throw new NoCityFound(StatusCodes.BAD_REQUEST, 'Invalid city id', '/delete-city:id');
 

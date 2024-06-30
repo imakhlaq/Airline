@@ -2,6 +2,9 @@ import CityService from '@/services/city-service';
 import { Request, Response } from 'express';
 import { cityIdValid, citySearchValid, cityValid } from '@/DTO/city';
 import { StatusCodes } from 'http-status-codes';
+import Repository from '@/repository/IRepository';
+import { db } from '@/db/db';
+import city from '@/db/models/city';
 
 class CityController {
 	private readonly cityService: CityService;
@@ -27,7 +30,6 @@ class CityController {
 	public async addCity(req: Request, res: Response) {
 		//validating the city
 		const cityDT0 = cityValid.parse(req.body);
-
 		const newCity = await this.cityService.createCity(cityDT0);
 		return res.status(200).json(newCity);
 	}

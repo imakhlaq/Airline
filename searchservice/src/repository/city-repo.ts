@@ -1,26 +1,14 @@
-import { City } from '@/db/models/city';
 import { db } from '@/db/db';
 import { city } from '@/db/models';
-import { eq, ilike } from 'drizzle-orm';
-import { CityDTO, CityIdDTO } from '@/DTO/city';
-import { NoCityFound } from '@/errors/city';
-import { StatusCodes } from 'http-status-codes';
+import { ilike } from 'drizzle-orm';
+import Repository from '@/repository/IRepository';
 
-class CityRepo {
-	async createCity(cityDTO: CityDTO) {
-		return db.insert(city).values(cityDTO).returning();
+class CityRepo extends Repository<typeof city> {
+	constructor() {
+		super(db, city);
 	}
 
-	async getCity(id: CityIdDTO) {
-		return db.select().from(city).where(eq(city.id, id.id));
-	}
-
-	async updateCity(city: City, id: string) {}
-
-	async deleteCity(id: CityIdDTO) {
-		return db.delete(city).where(eq(city.id, id.id)).returning();
-	}
-
+	//specialized methods
 	async getAllCity(limit: number, offset: number, startsWith?: string) {
 		//if u have starting character then return only matching cities
 		if (startsWith)
