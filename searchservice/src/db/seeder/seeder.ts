@@ -1,6 +1,4 @@
-// tsx seed.ts
-
-import { en, faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import { drizzle, PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { env } from '@/config/env';
@@ -21,7 +19,6 @@ const generateUserRows = (count: number): CityDTO[] => {
 			name: faker.location.city()
 		});
 	}
-
 	return rows;
 };
 

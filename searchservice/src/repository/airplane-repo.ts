@@ -1,6 +1,5 @@
 import { db } from '@/db/db';
 import airplane from '@/db/models/airplane';
-import { AirplaneDTO } from '@/DTO/airplane';
 import { eq } from 'drizzle-orm';
 import Repository from '@/repository/IRepository';
 

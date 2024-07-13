@@ -12,7 +12,7 @@ class AirportController {
 
 	public async addAirport(req: Request, res: Response) {
 		const airportDTO = airportValid.parse(req.body);
-
+		console.log('INSIDE CONTROLLER');
 		const newAirport = await this.airportService.addAirport(airportDTO);
 		return res.status(StatusCodes.OK).json(newAirport);
 	}

@@ -24,7 +24,7 @@ export class Server {
 	}
 
 	start() {
-		//* Middlewares
+		// Middlewares
 		this.app.use(express.json()); // parse json in request body (allow raw)
 		this.app.use(express.urlencoded({ extended: true })); // allow x-www-form-urlencoded
 		this.app.use(compression());

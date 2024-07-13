@@ -23,7 +23,7 @@ app.patch('/update-capacity', airplaneController.updateCapacity.bind(airplaneCon
 //airport routes
 const airportController = new AirportController();
 
-app.post('/add-airport', airportController.addAirport.bind(airplaneController));
-app.delete('/remove-airport/:id', airportController.removeAirport.bind(airplaneController));
+app.post('/add-airport', airportController.addAirport.bind(airportController));
+app.delete('/remove-airport/:id', airportController.removeAirport.bind(airportController));
 
 export default app;

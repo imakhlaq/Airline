@@ -11,10 +11,11 @@ import { CustomError } from '@/errors/custom-error';
  * @param res
  * @param next
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler: ErrorRequestHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
 	//TODO: need to format the zod thrown errors
 	if (err instanceof ZodError) {
-		let zodError = JSON.parse(err.message);
+		const zodError = JSON.parse(err.message);
 		return res.status(StatusCodes.BAD_REQUEST).json({
 			statusCode: StatusCodes.BAD_REQUEST,
 			message: zodError,

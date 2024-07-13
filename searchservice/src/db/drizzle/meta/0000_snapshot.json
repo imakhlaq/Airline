@@ -1,5 +1,5 @@
 {
-  "id": "d9c80b90-2dd0-4281-9a6b-2e1f1a30c989",
+  "id": "2e196e06-1eb4-4b57-8f42-e2f4168b7e34",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -69,6 +69,12 @@
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
+        },
+        "airport_address": {
+          "name": "airport_address",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
@@ -160,14 +166,14 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "departure_city_id": {
-          "name": "departure_city_id",
+        "departure_airport_id": {
+          "name": "departure_airport_id",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
         },
-        "destination_city_id": {
-          "name": "destination_city_id",
+        "destination_airport_id": {
+          "name": "destination_airport_id",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true

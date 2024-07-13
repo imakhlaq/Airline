@@ -42,7 +42,7 @@ class CityService {
 		return data;
 	}
 
-	async updateCity(data: any, id: string) {
+	async updateCity(data: never, id: string) {
 		return;
 	}
 }

@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS "airports" (
 	"airport_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"airport_name" varchar(256) NOT NULL,
 	"city_id" uuid,
+	"airport_address" varchar(256) NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );
@@ -24,8 +25,8 @@ CREATE TABLE IF NOT EXISTS "city" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "flights" (
 	"airplane_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"departure_city_id" varchar(256) NOT NULL,
-	"destination_city_id" varchar(256) NOT NULL,
+	"departure_airport_id" varchar(256) NOT NULL,
+	"destination_airport_id" varchar(256) NOT NULL,
 	"city_id" uuid,
 	"departure_time" timestamp NOT NULL,
 	"arrival_time" timestamp NOT NULL,

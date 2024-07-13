@@ -2,9 +2,6 @@ import CityService from '@/services/city-service';
 import { Request, Response } from 'express';
 import { cityIdValid, citySearchValid, cityValid } from '@/DTO/city';
 import { StatusCodes } from 'http-status-codes';
-import Repository from '@/repository/IRepository';
-import { db } from '@/db/db';
-import city from '@/db/models/city';
 
 class CityController {
 	private readonly cityService: CityService;

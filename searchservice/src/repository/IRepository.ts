@@ -1,7 +1,7 @@
 import { PgInsertValue } from 'drizzle-orm/pg-core';
 import { eq } from 'drizzle-orm';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
-import type { PgTable } from 'drizzle-orm/pg-core/table';
+import { PgTable } from 'drizzle-orm/pg-core/table';
 
 class Repository<T extends PgTable> {
 	private readonly db: PostgresJsDatabase<any>;
